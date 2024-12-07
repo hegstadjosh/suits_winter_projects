@@ -23,3 +23,9 @@ As well as free Perplexity Pro, we get $5 in free Perplexity API credits per mon
 ### perplexity_api.py
 - Uses Perplexity API to generate a response
 - Returns a JSON object with the response, citations, and other information
+
+### openai_simple.py
+- Basic implementation of OpenAI chat completion API
+- Maintains conversation history with system, user, and assistant messages
+- Simple command-line interface for chatting with AI
+- Supports graceful error handling and conversation termination
