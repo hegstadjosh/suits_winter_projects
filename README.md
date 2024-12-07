@@ -1,7 +1,7 @@
 # Intro 
 Each of the files in ./ai_agents will run correctly if you have your api keys defined and the correct packages installed (you'll have to use pip install x if not). 
 
-As well as free Perplexity Pro, we get $5 in free Perplexity API credits per month thru our Columbia Google account. I recommend purchasing OpenAI API credits-- $5 will last you a very long time (costs ~$1 per 40,000 words of input + output for gpt-4o), and it provides you much more capability than perplexity's (access to gpt-4o, new o1-preview & o1-mini; no searching; agents). 
+As well as free Perplexity Pro, we get $5 in free Perplexity API credits per month thru our Columbia Google accounts. I recommend purchasing OpenAI API credits-- $5 will last you a very long time (costs ~$1 per 40,000 words of input + output for gpt-4o), and it provides you much more capability than perplexity's (access to gpt-4o, new o1-preview & o1-mini; no searching; agents). 
 
 # Environment Variables
 
