@@ -1,15 +1,20 @@
-./.env:
-- PERPLEXITY_API_KEY: your perplexity api key
-- OPENAI_API_KEY: your openai api key
+# Environment Variables
 
-./ai_agents/
-    openai_agents.py:
-        - uses openai api to generate a response
-        - uses function calling to get a response in a specific format
-        - uses structured output to get a response in a specific format
-        - uses json mode to get a response in a specific format
-        - uses json schema to get a response in a specific format
+## .env
+- `PERPLEXITY_API_KEY`: your perplexity api key
+- `OPENAI_API_KEY`: your openai api key
 
-    perplexity_api.py:
-        - uses perplexity api to generate a response
-        - returns a json object with the response, citations, and other information
+# Project Structure
+
+## ./ai_agents/
+
+### openai_agents.py
+- Uses OpenAI API to generate a response
+- Uses function calling to get a response in a specific format
+- Uses structured output to get a response in a specific format
+- Uses JSON mode to get a response in a specific format
+- Uses JSON schema to get a response in a specific format
+
+### perplexity_api.py
+- Uses Perplexity API to generate a response
+- Returns a JSON object with the response, citations, and other information
