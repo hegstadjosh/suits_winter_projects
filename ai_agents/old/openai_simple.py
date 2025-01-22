@@ -11,6 +11,45 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 console = Console()
 
+
+def get_ai_response(messages, model="gpt-4o"):
+    """
+    Get AI response for given messages using specified model.
+    
+    Args:
+        messages (list): List of message dictionaries with role and content
+        model (str): Model identifier to use for the completion
+        
+    Returns:
+        tuple: (updated_messages, success, error_message)
+    """
+
+    if type(messages) == str: 
+        print("messages is a string, converting to list")
+        messages = [{"role": "user", "content": messages}]
+
+    try:
+        if model != "gpt-4o": 
+            # Remove system message if present
+            messages = [msg for msg in messages if msg["role"] != "system"]
+
+        # Get AI response
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages
+        )
+        
+        # Extract AI response
+        ai_response = response.choices[0].message.content
+        
+        # Add AI response to messages
+        messages.append({"role": "assistant", "content": ai_response})
+        
+        return messages, True, ai_response
+        
+    except Exception as e:
+        return messages, False, str(e)
+
 def chat_with_ai():
     # Available models
     models = {
@@ -52,26 +91,16 @@ def chat_with_ai():
         # Add user message to conversation
         messages.append({"role": "user", "content": user_input})
         
-        try:
-            # Get AI response
-            response = client.chat.completions.create(
-                model=selected_model,
-                messages=messages
-            )
-            
-            # Extract AI response
-            ai_response = response.choices[0].message.content
-            
+        # Get AI response using the new function
+        messages, success, response = get_ai_response(messages, selected_model)
+        
+        if success:
             # Print AI response with markdown rendering
             print("\nAI:")
-            md = Markdown(ai_response)
+            md = Markdown(response)
             console.print(md)
-            
-            # Add AI response to conversation history
-            messages.append({"role": "assistant", "content": ai_response})
-            
-        except Exception as e:
-            print(f"\nError: {str(e)}")
+        else:
+            print(f"\nError: {response}")
             break
 
 if __name__ == "__main__":
